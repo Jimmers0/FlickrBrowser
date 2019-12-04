@@ -14,17 +14,17 @@ public class BaseActivity extends AppCompatActivity {
     void activateToolbar(boolean enableHome) {
         Log.d(TAG, "activateToolbar: starts");
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
+        if(actionBar == null) {
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-            if (toolbar != null) {
+            if(toolbar != null) {
                 setSupportActionBar(toolbar);
                 actionBar = getSupportActionBar();
             }
         }
-        if (actionBar != null) {
-            getActionBar().setDisplayHomeAsUpEnabled(enableHome);
-        }
 
+        if(actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(enableHome);
+        }
     }
 }

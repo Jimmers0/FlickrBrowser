@@ -16,7 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecyclerViewAdapter.FlickrImageViewHolder> {
+class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecyclerViewAdapter.FlickrImageViewHolder> {
     private static final String TAG = "FlickrRecyclerViewAdapt";
     private List<Photo> mPhotosList;
     private Context mContext;
@@ -32,15 +32,6 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecycl
         Log.d(TAG, "onCreateViewHolder: new view requested");
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.browse, parent, false);
         return new FlickrImageViewHolder(view);
-    }
-
-    void loadNewData(List<Photo> newPhotos) {
-        mPhotosList = newPhotos;
-        notifyDataSetChanged();
-    }
-
-    public Photo getPhoto(int position) {
-        return ((mPhotosList != null) && (mPhotosList.size() != 0) ? mPhotosList.get(position) : null);
     }
 
     @Override
@@ -62,6 +53,15 @@ public class FlickrRecyclerViewAdapter extends RecyclerView.Adapter<FlickrRecycl
     @Override
     public int getItemCount() {
         return ((mPhotosList != null) && (mPhotosList.size() != 0) ? mPhotosList.size() : 0);
+    }
+
+    void loadNewData(List<Photo> newPhotos) {
+        mPhotosList = newPhotos;
+        notifyDataSetChanged();
+    }
+
+    public Photo getPhoto(int position) {
+        return ((mPhotosList != null) && (mPhotosList.size() != 0) ? mPhotosList.get(position) : null);
     }
 
     static class FlickrImageViewHolder extends RecyclerView.ViewHolder {
